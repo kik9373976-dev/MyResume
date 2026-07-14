@@ -3,10 +3,22 @@ import { useSettings } from '../../context/SettingsContext'
 
 const STORAGE_KEY = 'rusalina-portfolio-reviews'
 
+const isAccidentalReview = (review) => {
+  const name = review?.name?.trim()
+  const text = review?.text?.trim()
+  return name === 'льдль' || text === 'лдлдлльлььждьждьдьждь'
+}
+
 const loadReviews = () => {
   try {
     const savedReviews = JSON.parse(window.localStorage.getItem(STORAGE_KEY))
-    return Array.isArray(savedReviews) ? savedReviews : []
+    if (!Array.isArray(savedReviews)) return []
+
+    const cleanReviews = savedReviews.filter((review) => !isAccidentalReview(review))
+    if (cleanReviews.length !== savedReviews.length) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanReviews))
+    }
+    return cleanReviews
   } catch {
     return []
   }
@@ -18,11 +30,6 @@ export default function ReviewSection() {
   const [errors, setErrors] = useState({})
   const { language, t } = useSettings()
   const locale = language === 'uz' ? 'uz-UZ' : language === 'en' ? 'en-US' : 'ru-RU'
-  const exampleNotice = language === 'en'
-    ? 'Examples of how reviews will look. Published visitor reviews appear first.'
-    : language === 'uz'
-      ? 'Fikrlar qanday ko‘rinishiga misollar. Tashrif buyuruvchilarning fikrlari yuqorida chiqadi.'
-      : 'Примеры оформления карточек. Опубликованные отзывы посетителей появляются выше.'
   const exampleReviews = [
     { id: 'example-1', name: 'Alina K.', role: t('reviews.demo1Role').replace(/\s*·\s*demo/gi, ''), text: t('reviews.demo1Text'), rating: 5 },
     { id: 'example-2', name: 'Malika A.', role: t('reviews.demo2Role').replace(/\s*·\s*demo/gi, ''), text: t('reviews.demo2Text'), rating: 5 },
@@ -76,7 +83,7 @@ export default function ReviewSection() {
   return (
     <section className="reviews container">
       <div className="reviews__heading">
-        <h2>{t('reviews.title')}<br /><em>{t('reviews.accent')}</em></h2>
+        <h2>{t('reviews.title')}</h2>
         <p>{t('reviews.text')}</p>
       </div>
 
@@ -110,7 +117,6 @@ export default function ReviewSection() {
         </form>
 
         <div className="review-list" aria-live="polite">
-          <p className="review-list__notice">{exampleNotice}</p>
           {visibleReviews.map((review) => (
             <article className="review-card" key={review.id}>
               <div className="review-card__top">

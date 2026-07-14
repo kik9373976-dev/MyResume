@@ -46,15 +46,6 @@ export default function About() {
           <p>{t('about.p1')}</p>
           <p>{t('about.p2')}</p>
           <p>{t('about.p3')}</p>
-          <dl className="profile-meta">
-            <div><dt>{t('about.birth')}</dt><dd>{t('about.birthValue')}</dd></div>
-            <div><dt>{t('about.location')}</dt><dd>{t('about.locationValue')}</dd></div>
-          </dl>
-          <div className="profile-contacts">
-            <a href="mailto:blackrouse536@gmail.com"><span>Email</span><strong>blackrouse536@gmail.com</strong><ArrowIcon /></a>
-            <Link to="/contact#message-form"><span>Telegram</span><strong>{t('about.write')}</strong><ArrowIcon /></Link>
-            <a href="https://github.com/moonrouse" target="_blank" rel="noreferrer"><span>GitHub</span><strong>@moonrouse</strong><ArrowIcon /></a>
-          </div>
         </div>
       </section>
 

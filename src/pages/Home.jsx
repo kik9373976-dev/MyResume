@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 import ArrowIcon from '../components/ui/ArrowIcon'
 import Reveal from '../components/ui/Reveal'
 import portrait from '../../pictures/myPhoto.PNG'
@@ -6,13 +7,35 @@ import ReviewSection from '../components/reviews/ReviewSection'
 import { useSettings } from '../context/SettingsContext'
 
 const stack = ['React', 'JavaScript', 'HTML / CSS', 'SCSS', 'Vite', 'React Router', 'Redux Toolkit', 'Zustand', 'Git', 'REST API']
+const EMAIL = 'blackrouse536@gmail.com'
+const TELEGRAM_USERNAME = 'rostberryrouse'
+const TELEGRAM_URL = `https://telegram.me/${TELEGRAM_USERNAME}`
 
 export default function Home() {
   const { t } = useSettings()
+  const [isContactOpen, setIsContactOpen] = useState(false)
+  const contactRef = useRef(null)
   const experience = [
     { period: t('home.exp1Period'), role: t('home.exp1Role'), place: t('home.exp1Place'), text: t('home.exp1Text') },
     { period: t('home.exp2Period'), role: t('home.exp2Role'), place: t('home.exp2Place'), text: t('home.exp2Text') },
   ]
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!contactRef.current?.contains(event.target)) setIsContactOpen(false)
+    }
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setIsContactOpen(false)
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
   return (
     <>
       <section className="resume-hero container">
@@ -25,7 +48,35 @@ export default function Home() {
           <p className="resume-hero__lead">{t('home.lead')}</p>
           <div className="resume-hero__actions">
             <Link className="button button--primary" to="/projects">{t('home.works')} <ArrowIcon /></Link>
-            <a className="button button--ghost" href="mailto:blackrouse536@gmail.com">{t('home.contact')}</a>
+            <div className={`contact-popover ${isContactOpen ? 'is-open' : ''}`} ref={contactRef}>
+              <button
+                className="button button--ghost"
+                type="button"
+                aria-expanded={isContactOpen}
+                aria-controls="hero-contact-menu"
+                onClick={() => setIsContactOpen((current) => !current)}
+              >
+                {t('home.contact')}
+              </button>
+              <div className="contact-popover__menu" id="hero-contact-menu" role="menu">
+                <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" role="menuitem" onClick={() => setIsContactOpen(false)}>
+                  <span className="contact-popover__icon">TG</span>
+                  <span>
+                    <strong>Telegram</strong>
+                    <small>@{TELEGRAM_USERNAME}</small>
+                  </span>
+                  <ArrowIcon />
+                </a>
+                <a href={`mailto:${EMAIL}?subject=${encodeURIComponent(t('contact.subject'))}`} role="menuitem" onClick={() => setIsContactOpen(false)}>
+                  <span className="contact-popover__icon">EM</span>
+                  <span>
+                    <strong>Email</strong>
+                    <small>{EMAIL}</small>
+                  </span>
+                  <ArrowIcon />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -88,7 +88,7 @@ export default function Header() {
               <NavLink key={to} to={to} end={end} onClick={closeMenu} style={{ '--menu-index': index }} className={({ isActive }) => `mobile-navigation__link ${isActive ? 'is-active' : ''}`}>{label}</NavLink>
             ))}
           </nav>
-          <div className="mobile-navigation__bottom">{settings('header-settings--mobile')}<span>Rusalina Muzafarova · 2026</span></div>
+          <div className="mobile-navigation__bottom">{settings('header-settings--mobile')}<span >Rusalina Muzafarova · 2026</span></div>
         </aside>,
         document.body,
       )}
