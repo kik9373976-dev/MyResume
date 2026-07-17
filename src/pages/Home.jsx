@@ -2,13 +2,12 @@ import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import ArrowIcon from '../components/ui/ArrowIcon'
 import Reveal from '../components/ui/Reveal'
-import portrait from '../../pictures/myPhoto.PNG'
 import ReviewSection from '../components/reviews/ReviewSection'
 import { useSettings } from '../context/SettingsContext'
 
 const stack = ['React', 'JavaScript', 'HTML / CSS', 'SCSS', 'Vite', 'React Router', 'Redux Toolkit', 'Zustand', 'Git', 'REST API']
-const EMAIL = 'blackrouse536@gmail.com'
-const TELEGRAM_USERNAME = 'rostberryrouse'
+const EMAIL = 'kik9373976@gmail.com'
+const TELEGRAM_USERNAME = 'chast1chka'
 const TELEGRAM_URL = `https://telegram.me/${TELEGRAM_USERNAME}`
 
 export default function Home() {
@@ -38,7 +37,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="resume-hero container">
+      <section className="resume-hero resume-hero--no-photo container">
         <div className="resume-hero__copy">
           <p className="resume-hero__kicker">Frontend developer · Tashkent</p>
           <h1 aria-label={`${t('person.lastName')} ${t('person.firstName')}`}>
@@ -80,15 +79,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="resume-hero__visual">
-          <div className="photo-frame">
-            <img src={portrait} alt={t('person.photoAlt')} fetchPriority="high" />
-            <div className="photo-frame__scan" aria-hidden="true" />
-            <span className="photo-frame__code">DEV_01</span>
-            <span className="photo-frame__coords">41.2995° N<br />69.2401° E</span>
-          </div>
-          <div className="availability-badge"><i /> Open to work</div>
-        </div>
       </section>
 
       <div className="skill-marquee" aria-label={t('common.skills')}>

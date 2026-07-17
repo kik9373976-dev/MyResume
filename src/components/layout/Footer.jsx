@@ -8,15 +8,15 @@ export default function Footer() {
       <div className="container footer__inner">
         <div>
           <Link className="logo" to="/">
-            <span className="logo__mark">RM</span>
+            <span className="logo__mark">ДС</span>
           </Link>
           <p className="footer__note">{t('footer.note')}</p>
         </div>
         <div className="footer__meta">
           <a href="https://github.com/moonrouse" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="mailto:blackrouse536@gmail.com">Email</a>
-          <a href="tel:+998774486888">{t('footer.phone')}</a>
-          <span>© {new Date().getFullYear()} Rusalina Muzafarova. {t('footer.rights')}</span>
+          <a href="mailto:kik9373976@gmail.com">Email</a>
+          <a href="tel:+998998116487">{t('footer.phone')}</a>
+          <span>© {new Date().getFullYear()} Соловых Даниил. {t('footer.rights')}</span>
         </div>
       </div>
     </footer>

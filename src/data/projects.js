@@ -55,7 +55,7 @@ export const projects = [
   },
   {
     id: 'velora',
-    title: 'Velora',
+    title: 'NexaStore',
     description: 'project.velora',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
     liveUrl: 'https://moonrouse.github.io/Velora/',

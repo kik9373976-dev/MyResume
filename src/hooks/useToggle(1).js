@@ -1,0 +1,9 @@
+import { useCallback, useState } from 'react'
+
+export default function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue)
+  const toggle = useCallback(() => setValue((current) => !current), [])
+  const close = useCallback(() => setValue(false), [])
+
+  return [value, toggle, close]
+}

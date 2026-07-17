@@ -52,7 +52,7 @@ export default function Header() {
       <header className="header">
         <div className="container header__inner">
           <NavLink className="logo" to="/" aria-label={t('nav.home')}>
-            <span className="logo__mark">RM</span>
+            <span className="logo__mark">ДС</span>
             <span className="logo__text">frontend developer</span>
           </NavLink>
 
@@ -80,7 +80,7 @@ export default function Header() {
       {isOpen && createPortal(
         <aside className="mobile-navigation" id="mobile-navigation" aria-label={t('common.navigation')} aria-modal="true" role="dialog">
           <div className="mobile-navigation__top">
-            <span className="logo"><span className="logo__mark">RM</span><span className="logo__text">frontend developer</span></span>
+            <span className="logo"><span className="logo__mark">ДС</span><span className="logo__text">frontend developer</span></span>
             <button className="mobile-navigation__close" type="button" aria-label={t('nav.close')} onClick={closeMenu}><span /><span /></button>
           </div>
           <nav className="mobile-navigation__links">
@@ -88,7 +88,7 @@ export default function Header() {
               <NavLink key={to} to={to} end={end} onClick={closeMenu} style={{ '--menu-index': index }} className={({ isActive }) => `mobile-navigation__link ${isActive ? 'is-active' : ''}`}>{label}</NavLink>
             ))}
           </nav>
-          <div className="mobile-navigation__bottom">{settings('header-settings--mobile')}<span >Rusalina Muzafarova · 2026</span></div>
+          <div className="mobile-navigation__bottom">{settings('header-settings--mobile')}<span >Соловых Даниил · 2026</span></div>
         </aside>,
         document.body,
       )}

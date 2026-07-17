@@ -1,8 +1,8 @@
 import ArrowIcon from '../components/ui/ArrowIcon'
 import { useSettings } from '../context/SettingsContext'
 
-const EMAIL = 'blackrouse536@gmail.com'
-const TELEGRAM_USERNAME = 'rostberryrouse'
+const EMAIL = 'kik9373976@gmail.com'
+const TELEGRAM_USERNAME = 'chast1chka'
 const TELEGRAM_URL = `https://telegram.me/${TELEGRAM_USERNAME}`
 
 export default function Contact() {
@@ -28,9 +28,9 @@ export default function Contact() {
             <strong>{EMAIL}</strong>
             <ArrowIcon />
           </a>
-          <a className="contact-direct__card" href="tel:+998774486888">
+          <a className="contact-direct__card" href="tel:+998998116487">
             <span>{t('contact.phone')}</span>
-            <strong>+998 77 448 68 88</strong>
+            <strong>+998 99 811 64 87</strong>
             <ArrowIcon />
           </a>
           <a className="contact-direct__card" href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">

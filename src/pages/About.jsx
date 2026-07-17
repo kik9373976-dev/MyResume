@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageIntro from '../components/ui/PageIntro'
 import ArrowIcon from '../components/ui/ArrowIcon'
-import portrait from '../../pictures/myPhoto.PNG'
 import { useSettings } from '../context/SettingsContext'
 
 const skillGroups = [
@@ -36,11 +35,7 @@ export default function About() {
   return (
     <>
       <PageIntro title={t('about.title')} />
-      <section className="about container">
-        <div className="about__portrait">
-          <img src={portrait} alt={t('person.photoAlt')} loading="lazy" decoding="async" />
-          <span>Frontend Developer · Tashkent</span>
-        </div>
+      <section className="about about--no-photo container">
         <div className="about__content">
           <p className="about__lead">{t('about.lead')}</p>
           <p>{t('about.p1')}</p>
@@ -51,7 +46,7 @@ export default function About() {
 
       <section className="skill-catalog container">
         <div className="skill-catalog__heading">
-          <h2>Technical<br />Skills</h2>
+          <h2>Technical Skills</h2>
         </div>
         <div className="skill-groups">
           {skillGroups.map((group, groupIndex) => (
