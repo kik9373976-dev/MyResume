@@ -7,7 +7,7 @@ import { SettingsProvider } from './context/SettingsContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/MyResume">
+    <BrowserRouter>
       <SettingsProvider><App /></SettingsProvider>
     </BrowserRouter>
   </StrictMode>,
